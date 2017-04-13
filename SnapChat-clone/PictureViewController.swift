@@ -17,10 +17,14 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate,U
     
     var imagePicker = UIImagePickerController()
     
+    var uuid = NSUUID().uuidString
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imagePicker.delegate = self
+        
+        nextButton.isEnabled = false
         
     }
 
@@ -34,6 +38,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate,U
         
         imageView.backgroundColor = UIColor.clear
         
+        nextButton.isEnabled = true
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
@@ -56,12 +61,12 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate,U
         
        
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)!
-        imagesFolder.child("\(NSUUID().uuidString).jpg").put(imageData, metadata: nil, completion: {(metadata, Error) in
-            print("We tried to uplod")
+        imagesFolder.child("\(uuid).jpg").put(imageData, metadata: nil, completion: {(metadata, Error) in
+           
             if Error != nil {
-                print("We had an \(String(describing: Error))")
+            
             } else {
-                self.performSegue(withIdentifier: "selectUsersegue", sender: nil)
+                self.performSegue(withIdentifier: "selectUsersegue", sender: metadata?.downloadURL()!.absoluteString)
             }
         })
       
@@ -70,6 +75,10 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate,U
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        let nextVC = segue.destination as! SelectUserViewController
+        nextVC.imageURL = sender as! String
+        nextVC.descrip = descriptionTextField.text!
+        nextVC.uuid = uuid
     
         
            }

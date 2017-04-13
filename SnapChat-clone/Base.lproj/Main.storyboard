@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vbt-qC-YDd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="71" id="5VL-Ku-fNx"/>
                             <constraint firstItem="0WA-Lq-cmJ" firstAttribute="top" secondItem="vbt-qC-YDd" secondAttribute="bottom" constant="26" id="D3e-oS-ydr"/>
@@ -78,7 +78,7 @@
         <!--Snaps View Controller-->
         <scene sceneID="JPp-6w-gBC">
             <objects>
-                <viewController id="vy7-Ia-to4" customClass="SnapsViewController" customModule="SnapChat_clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vy7-Ia-to4" customClass="SnapsViewController" customModule="SnapChat_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JZX-K1-75s"/>
                         <viewControllerLayoutGuide type="bottom" id="Ejk-GX-RxR"/>
@@ -86,7 +86,19 @@
                     <view key="view" contentMode="scaleToFill" id="ndH-TI-P0h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3sp-Nm-q8e">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ejk-GX-RxR" firstAttribute="top" secondItem="3sp-Nm-q8e" secondAttribute="bottom" id="W3s-VO-NRC"/>
+                            <constraint firstItem="3sp-Nm-q8e" firstAttribute="top" secondItem="JZX-K1-75s" secondAttribute="bottom" id="X3A-l8-C6L"/>
+                            <constraint firstAttribute="trailing" secondItem="3sp-Nm-q8e" secondAttribute="trailing" id="XIC-4L-bFq"/>
+                            <constraint firstItem="3sp-Nm-q8e" firstAttribute="leading" secondItem="ndH-TI-P0h" secondAttribute="leading" id="klI-yl-RmM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UPv-7F-glM">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="ryP-R5-A2e">
@@ -100,6 +112,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="3sp-Nm-q8e" id="NSN-IA-8KS"/>
+                        <segue destination="kPv-Kp-aYg" kind="show" identifier="viewsnapsegue" id="rRO-w6-nGG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ob-hF-LxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -226,6 +242,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDY-Ar-k8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002" y="137"/>
+        </scene>
+        <!--View Snap View Controller-->
+        <scene sceneID="CLt-Sh-5Wp">
+            <objects>
+                <viewController id="kPv-Kp-aYg" customClass="ViewSnapViewController" customModule="SnapChat_clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UKn-Ir-X6s"/>
+                        <viewControllerLayoutGuide type="bottom" id="le0-nG-KSq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6K5-sP-fBp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kE2-oh-XMl">
+                                <rect key="frame" x="21" y="636" width="333" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7l-Ok-FRU">
+                                <rect key="frame" x="26" y="74" width="323" height="552"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="f7l-Ok-FRU" secondAttribute="trailing" constant="10" id="CjC-fd-obU"/>
+                            <constraint firstItem="f7l-Ok-FRU" firstAttribute="leading" secondItem="6K5-sP-fBp" secondAttribute="leadingMargin" constant="10" id="WPX-A4-gL6"/>
+                            <constraint firstItem="kE2-oh-XMl" firstAttribute="centerX" secondItem="6K5-sP-fBp" secondAttribute="centerX" id="gOZ-HZ-BIX"/>
+                            <constraint firstItem="f7l-Ok-FRU" firstAttribute="top" secondItem="UKn-Ir-X6s" secondAttribute="bottom" constant="10" id="keN-Tw-IpH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kE2-oh-XMl" secondAttribute="trailing" constant="5" id="rvl-HL-tBv"/>
+                            <constraint firstItem="le0-nG-KSq" firstAttribute="top" secondItem="kE2-oh-XMl" secondAttribute="bottom" constant="10" id="snQ-os-nBY"/>
+                            <constraint firstItem="kE2-oh-XMl" firstAttribute="top" secondItem="f7l-Ok-FRU" secondAttribute="bottom" constant="10" id="wwa-dh-7ov"/>
+                            <constraint firstItem="kE2-oh-XMl" firstAttribute="leading" secondItem="6K5-sP-fBp" secondAttribute="leadingMargin" constant="5" id="yKS-J5-Zmm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="f7l-Ok-FRU" id="UWa-Bq-Bkd"/>
+                        <outlet property="label" destination="kE2-oh-XMl" id="Kbd-e3-uzU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="har-Oh-qGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1862" y="914"/>
         </scene>
     </scenes>
 </document>
